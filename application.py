@@ -60,6 +60,13 @@ def history():
     """Show history of transactions"""
     return apology("TODO")
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        pass
+    else:
+        return render_template("register.html")
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -113,12 +120,6 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    return apology("TODO")
-
-
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    """Register user"""
     return apology("TODO")
 
 
