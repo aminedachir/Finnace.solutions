@@ -3,6 +3,8 @@ import os
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
+from forms import loginform
+from config import config
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -11,6 +13,7 @@ from helpers import apology, login_required, lookup, usd
 
 # Configure application
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "lames@17.com"
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -61,10 +64,8 @@ def history():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        pass
-    else:
-        return render_template("register.html")
+    form = loginform()
+    return render_template("register.html", form = form)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -102,6 +103,9 @@ def login():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("login.html")
+
+    if form.validat_on_submit():
+        return render_template("register.html")
 
 
 @app.route("/logout")
