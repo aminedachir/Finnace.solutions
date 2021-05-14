@@ -61,8 +61,7 @@ def history():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = loginform()
-    return render_template("register.html", form = form)
+    return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
