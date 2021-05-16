@@ -5,9 +5,12 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/login" method="post">
+    <form action="/register" method="post">
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            {% for error in errors %}
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+                {% error.username %}
+            {% endfor %}
         </div>
         <div class="form-group">
             <input class="form-control" name="password" placeholder="Password" type="password"><br><br>
