@@ -61,6 +61,9 @@ def history():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method = 'POST':
+        username=request.form.get("username"))
+        hash=generate_password_hash(request.form.get("password"))
     return render_template("register.html")
 
 
