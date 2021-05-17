@@ -7,14 +7,11 @@
 {% block main %}
     <form action="/register" method="post">
         <div class="form-group">
-            {% for error in errors %}
-                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
-                {% error.username %}
-            {% endfor %}
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
         </div>
         <div class="form-group">
             <input class="form-control" name="password" placeholder="Password" type="password"><br><br>
-            <input class="form-control" name="password" placeholder="Confirm Password" type="password" >
+            <input class="form-control" name="confirm" placeholder="Confirm Password" type="password" >
         </div>
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
