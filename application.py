@@ -74,7 +74,7 @@ def register():
                           username=username)
 
         if len(rows) != 0:
-            return "username exists"
+            return "<p>username exists</p>"
 
         elif password1 != password2:
             return apology("password and confirm password not match!")
