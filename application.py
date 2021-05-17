@@ -62,9 +62,28 @@ def history():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method = 'POST':
-        username=request.form.get("username"))
-        hash=generate_password_hash(request.form.get("password"))
-    return render_template("register.html")
+        username = request.form.get("username")
+        password1 = request.form.get("password")
+        password2 = request.from.get("confirm password")
+
+        rows = db.execute("SELECT * FROM users WHERE username = :username",username=username)
+
+        if len(rows) != 0:
+            return "username already exist"
+
+        elif password1 != password2:
+            return "password and confirm password not match"
+
+        else:
+            hash = generate_password_hash(password1)
+
+            rows = db.execute("INSERT INTO users(username,hash) VALUES (:username, :password)",username=username,password=password)
+
+            session["user_id"] = db.execute("SELECT id FROM users WHERE username = :username", username=username)[0]["id"]
+
+            return redirect("/")
+    else:
+        return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
