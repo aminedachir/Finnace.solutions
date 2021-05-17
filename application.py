@@ -77,7 +77,7 @@ def register():
             return "<script>alert('username exists')</script>"
 
         elif password1 != password2:
-            return apology("password and confirm password not match!")
+            return "<script>alert('password and confirm password not match')</script>"
 
         else:
             password = generate_password_hash(password1)
