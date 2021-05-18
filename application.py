@@ -127,13 +127,15 @@ def logout():
 @login_required
 def quote():
     if request.method == 'POST':
-        quotee = request.form.get("symbol")
+        quotee = lookup(request.form.get("symbol"))
 
         if quotee = None:
             return ("Invalid")
         else:
             return render_template("quotee.html", quotee=quotee)
 
+    else:
+        return render_template("quote.html")
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
