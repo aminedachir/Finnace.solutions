@@ -129,7 +129,7 @@ def quote():
     if request.method == 'POST':
         quotee = lookup(request.form.get("symbol"))
 
-        if quotee = None:
+        if quotee == None:
             return ("Invalid")
         else:
             return render_template("quotee.html", quotee=quotee)
