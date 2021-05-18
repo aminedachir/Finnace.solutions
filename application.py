@@ -130,7 +130,7 @@ def quote():
         quotee = lookup(request.form.get("symbol"))
 
         if quotee == None:
-            return ("<script>alert('Invalid')</script>")
+            return ("<script>alert('Invalid quote')</script>")
         else:
             return render_template("quotee.html", quotee=quotee)
 
