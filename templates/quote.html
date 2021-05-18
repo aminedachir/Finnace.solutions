@@ -8,19 +8,15 @@
 
     <form action="/quote" method="post">
         <div class="form-group">
-            <input autocomplete="off" autofocus="" class="form-control" name="symbol" placeholder="Symbol" type="text" onkeyup="manage(this)">
+            <input class="form-control" name="symbol" placeholder="Symbol" type="text" onkeyup="manage(this)">
         </div>
         <button id="submit" class="btn btn-primary" type="submit" disabled>quote</button>
     </form>
     <script>
     function manage(inpt) {
         var acces = document.getElementById('submit');
-        if (inpt.value != '') {
-            acces.disabled = false;
-        }
-        else {
-            acces.disabled = true;
-        }
+        if (inpt.value != '') {acces.disabled = false;}
+        else {acces.disabled = true;}
     }
     </script>
 {% endblock %}
