@@ -155,6 +155,7 @@ def quote():
 @login_required
 def sell():
     if request.method == 'POST':
+        return apology("TODDO")
     else:
         return render_template("sell.html")
 

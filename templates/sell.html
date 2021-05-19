@@ -4,8 +4,12 @@
 {% endblock %}
 
 {% block main %}
-<form action = "/sell" method = 'POST'>
-
+<form action="/sell" method="POST">
+            <select class="form-control" name="symbol">
+                <option disabled="" selected="" value="">Symbol</option>
+            </select>
+            <input autocomplete="off" class="form-control" min="1" name="shares" placeholder="Shares" type="number"><br>
+        <input id = "submit"class="btn btn-primary" type="submit" value = "Submit">
 
 </form>
 {% endblock %}
