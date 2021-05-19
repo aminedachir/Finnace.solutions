@@ -58,13 +58,13 @@ def buy():
             return "<script>alert('Invalid Symbol')</script>"
 
         shares = int(request.form.get("shares"))
+
         cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
         amount = shares*stock["price"]
         if amount > cash:
             return "<script>alert('Can't Afford')</script>"
     else:
         return render_template("buy.html")
-
 
 @app.route("/history")
 @login_required
@@ -144,6 +144,7 @@ def quote():
 
         if quotee == None:
             return ("<script>alert('Invalid quote')</script>")
+
         else:
             return render_template("quotee.html", quotee=quotee)
 
