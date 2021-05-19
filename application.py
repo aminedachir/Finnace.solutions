@@ -156,8 +156,10 @@ def quote():
 def sell():
     if request.method == 'POST':
         shares = int(request.form.get("shares"))
+
         if shares == 0:
             return "<script>alert('enter a number of shares')</script>"
+
         stock = lookup(request.form.get("symbol"))
 
         stocks = db.execute("SELECT no_shares FROM stocks WHERE user_id = ? AND stock_symbol = ?",
@@ -166,6 +168,7 @@ def sell():
         sharess = stocks[0]["not shares"]
 
         if shares > sharess:
+
             return "<script>alert('You do not have this number of shares')</script>"
     else:
         return render_template("sell.html")
