@@ -59,6 +59,9 @@ def buy():
 
         shares = int(request.form.get("shares"))
         cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
+        amount = shares*stock["price"]
+        if amount > cash:
+            return "<script>alert('Can't Afford')</script>"
     else:
         return render_template("buy.html")
 
