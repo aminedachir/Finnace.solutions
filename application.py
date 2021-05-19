@@ -154,8 +154,9 @@ def quote():
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
-    """Sell shares of stock"""
-    return apology("TODO")
+    if request.method == 'POST':
+    else:
+        return render_template("sell.html")
 
 
 def errorhandler(e):
