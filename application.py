@@ -166,7 +166,7 @@ def sell():
         sharess = stocks[0]["not shares"]
 
         if shares > sharess:
-            return apology("TODO")
+            return "<script>alert('You do not have this number of shares')</script>"
     else:
         return render_template("sell.html")
 
