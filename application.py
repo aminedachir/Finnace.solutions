@@ -50,7 +50,7 @@ def index():
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
-    return apology("TODO")
+    return render_template("buy.html")
 
 
 @app.route("/history")
