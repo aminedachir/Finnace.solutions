@@ -7,7 +7,7 @@
 {% block main %}
 <form action = "/buy", method='POST'>
     <input class="form-control" name = "symbol" type = "text" PlaceHolder = "Symbol" onkeyup="manage(this)"> <br><br>
-    <input class="form-control" name = "shares" type = "text" PlaceHolder = "Shares" onkeyup="manage(this)"> <br><br>
+    <input class="form-control" name = "shares" type = "number" PlaceHolder = "Shares" onkeyup="manage(this)"> <br><br>
     <input id ="submit" class="btn btn-primary" type = "submit" value = "buy" disabled>
 </form>
 <script>

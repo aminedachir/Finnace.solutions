@@ -56,6 +56,9 @@ def buy():
 
         if stock == None:
             return "<script>alert('Invalid Symbol')</script>"
+
+        shares = int(request.form.get("shares"))
+        cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
     else:
         return render_template("buy.html")
 
