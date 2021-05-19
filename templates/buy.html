@@ -6,7 +6,16 @@
 
 {% block main %}
 <form action = "/buy", method='POST'>
-    <p>Hello</p>
+    <input class="form-control" name = "symbol" type = "text" PlaceHolder = "Symbol" onkeyup="manage(this)"> <br><br>
+    <input class="form-control" name = "shares" type = "text" PlaceHolder = "Shares" onkeyup="manage(this)"> <br><br>
+    <input id ="submit" class="btn btn-primary" type = "submit" value = "buy" disabled>
 </form>
+<script>
+    function manage(inpt) {
+        var acces = document.getElementById('submit');
+        if (inpt.value != '') {acces.disabled = false;}
+        else {acces.disabled = true;}
+    }
+</script>
 
 {% endblock %}

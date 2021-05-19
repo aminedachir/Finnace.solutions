@@ -50,6 +50,20 @@ def index():
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
+    if request.method == 'POST':
+        symbol = lookup(request.form.get("symbol"))
+
+        if symbol == None:
+            return ("<script>alert('Invalid quote')</script>")
+
+        shares = lookup(request.form.get("shares"))
+
+        if shares == int:
+            return redirect("/")
+
+        else:
+            return ("<script>alert('not int')</script>")
+
     return render_template("buy.html")
 
 
