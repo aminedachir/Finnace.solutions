@@ -158,6 +158,15 @@ def sell():
         shares = int(request.form.get("shares"))
         if shares == 0:
             return "<script>alert('enter a number of shares')</script>"
+        stock = lookup(request.form.get("symbol"))
+
+        stocks = db.execute("SELECT no_shares FROM stocks WHERE user_id = ? AND stock_symbol = ?",
+                                 session["user_id"], stock["symbol"])
+
+        sharess = stocks[0]["not shares"]
+
+        if shares > sharess:
+            return apology("TODO")
     else:
         return render_template("sell.html")
 
