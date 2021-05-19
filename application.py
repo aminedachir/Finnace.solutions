@@ -155,7 +155,9 @@ def quote():
 @login_required
 def sell():
     if request.method == 'POST':
-        return apology("TODDO")
+        shares = int(request.form.get("shares"))
+        if shares == 0:
+            return "<script>alert('enter a number of shares')</script>"
     else:
         return render_template("sell.html")
 
