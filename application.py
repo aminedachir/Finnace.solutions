@@ -46,6 +46,8 @@ def index():
     if request.method == 'POST':
         return ("TODO")
     else:
+        stock = lookup(request.form.get("symbol"))
+        total_price = shares*stock["price"]
         return render_template("index.html")
 
 
