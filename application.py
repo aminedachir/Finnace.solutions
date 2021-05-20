@@ -45,7 +45,8 @@ if not os.environ.get("API_KEY"):
 def index():
     if request.method == 'POST':
         return ("TODO")
-    return render_template("index.html")
+    else:
+        return render_template("index.html", username = username)
 
 
 @app.route("/buy", methods=["GET", "POST"])
