@@ -43,7 +43,8 @@ if not os.environ.get("API_KEY"):
 @app.route("/")
 @login_required
 def index():
-    """Show portfolio of stocks"""
+    if request.method == 'POST':
+        return ("TODO")
     return render_template("index.html")
 
 
