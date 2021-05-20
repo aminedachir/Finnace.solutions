@@ -71,8 +71,7 @@ def buy():
 @app.route("/history")
 @login_required
 def history():
-    """Show history of transactions"""
-    return apology("TODO")
+    return render_template("history.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
