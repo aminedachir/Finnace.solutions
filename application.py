@@ -71,7 +71,10 @@ def buy():
 @app.route("/history")
 @login_required
 def history():
-    return render_template("history.html")
+    if request.method == 'POST':
+        return ("TODO")
+    else:
+        return render_template("history.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
