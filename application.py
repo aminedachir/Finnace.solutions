@@ -44,9 +44,9 @@ if not os.environ.get("API_KEY"):
 @login_required
 def index():
     if request.method == 'POST':
-        return ("TODO")
+        stock = lookup(request.form.get("symbol"))
     else:
-        return render_template("index.html", username = username)
+        return render_template("index.html", stock = stock)
 
 
 @app.route("/buy", methods=["GET", "POST"])
