@@ -7,7 +7,7 @@
 
 {% block main %}
     <table class="table">
-        <th>
+        <thead>
             <tr>
                 <th>Symbol</th>
                 <th>Name</th>
@@ -15,6 +15,16 @@
                 <th>Price</th>
                 <th>Transaction</th>
             </tr>
-        </th>
+        </thead>
+        <td>
+            <tr>
+                <td>{{ History.symbol }}</td>
+                <td>{{ History.name }}</td>
+                <td>{{ History.shares }}</td>
+                <td>{{ History.per_share }}</td>
+                <td>{{ History.timeStamp }}</td>
+                </td>
+            </tr>
+        </td>
     </table>
 {% endblock%}
