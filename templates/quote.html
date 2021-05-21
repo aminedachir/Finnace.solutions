@@ -5,18 +5,10 @@
 {% endblock %}
 
 {% block main %}
-
     <form action="/quote" method="post">
         <div class="form-group">
-            <input class="form-control" name="symbol" placeholder="Symbol" type="text" onkeyup="manage(this)">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
         </div>
-        <button id="submit" class="btn btn-primary" type="submit" disabled>quote</button>
+        <button class="btn btn-primary" type="submit">Quote</button>
     </form>
-    <script>
-    function manage(inpt) {
-        var acces = document.getElementById('submit');
-        if (inpt.value != '') {acces.disabled = false;}
-        else {acces.disabled = true;}
-    }
-    </script>
 {% endblock %}
