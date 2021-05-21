@@ -71,10 +71,9 @@ def buy():
 @app.route("/history")
 @login_required
 def history():
-    if request.method == 'POST':
-        return ("TODO")
-    else:
-        return render_template("history.html")
+    History = db.execute("SELECT symbol, name, shares, per_share, timeStamp FROM portfolio WHERE user_id = :user_id ORDER BY timeStamp", user_id=session["user_id"])
+
+    return render_template("history.html", History=History)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
