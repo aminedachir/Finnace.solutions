@@ -49,9 +49,9 @@ def index():
     for i in range(len(stocks)):
         info.append(lookup(stocks[i]["stock_symbol"]))
         info[i]["shares"] = stocks[i]["no_shares"]
-        info[i]["total"] = info[i]["shares"] * info[i]["price"]
+        info[i]["total"] = usd(info[i]["shares"] * info[i]["price"])
         total += info[i]["shares"] * info[i]["price"]
-        info[i]["price"] = info[i]["price"]
+        info[i]["price"] = usd(info[i]["price"])
 
     return render_template("index.html", stocks=stock_info, cash=usd(cash), total=usd(total))
 
