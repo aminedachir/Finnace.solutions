@@ -173,8 +173,25 @@ def sell():
         if shares > sharess:
 
             return "<script>alert('You do not have this number of shares')</script>"
+    cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
+
+        amount = shares*stock["price"]
+
+        db.execute("UPDATE stocks SET no_shares = ? WHERE user_id = ? AND stock_symbol = ?",
+                   prev_shares-shares, session["user_id"], stock["symbol"])
+
+        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash+amount, session["user_id"])
+
+        now = datetime.now()
+        transacted = now.strftime("%H:%M:%S %d/%m/%Y")
+        db.execute("INSERT INTO history (id, symbol, price, total, shares, datetime) VALUES (?, ?, ?, ?, ?, ?)",
+                   session["user_id"], stock["symbol"], usd(stock["price"]), usd(amount), -shares, transacted)
+
+        return redirect("/")
+
     else:
-        return render_template("sell.html")
+        stocks = db.execute("SELECT stock_symbol, no_shares FROM stocks WHERE user_id = ?", session["user_id"])
+        return render_template("sell.html", stocks=stocks)
 
 
 def errorhandler(e):
