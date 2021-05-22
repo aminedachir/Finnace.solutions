@@ -143,15 +143,16 @@ def logout():
 @login_required
 def quote():
     if request.method == "POST":
+
         stock = lookup(request.form.get("symbol"))
 
-        if stock is None:
+        if not stock
             return "<script>alert('Invalid symbol')</script>"
-        else:
-            return render_template("quoted.html",stock = stock)
+
+        return render_template("quoted.html", stock=stock)
 
     else:
-        return render_template("quote.html")
+        return render_template("quote.html", stock="")
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
