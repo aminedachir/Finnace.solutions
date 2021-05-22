@@ -72,13 +72,13 @@ def buy():
         amount = shares*stock["price"]
         if amount > cash:
             return "<script>alert('Can't Afford')</script>"
-    prev_stocks = db.execute("SELECT no_shares FROM stocks WHERE user_id = ? AND stock_symbol = ?",
+    stocks = db.execute("SELECT no_shares FROM stocks WHERE user_id = ? AND stock_symbol = ?",
                                  session["user_id"], stock["symbol"])
 
         if len(stocks) != 0:
-            prev_shares = stocks[0]["not shares"]
+            sharess = stocks[0]["not shares"]
             db.execute("UPDATE stocks SET no_shares = ? WHERE user_id = ? AND stock_symbol = ?",
-                       prev_shares+shares, session["user_id"], stock["symbol"])
+                       sharess+shares, session["user_id"], stock["symbol"])
             db.execute("UPDATE users SET cash = ? WHERE id = ?", cash-req_amount, session["user_id"])
 
         else:
