@@ -75,19 +75,6 @@ def buy():
     stocks = db.execute("SELECT no_shares FROM stocks WHERE user_id = ? AND stock_symbol = ?",
                                  session["user_id"], stock["symbol"])
 
-        if len(stocks) != 0:
-            sharess = stocks[0]["not shares"]
-            db.execute("UPDATE stocks SET no_shares = ? WHERE user_id = ? AND stock_symbol = ?",
-                       sharess+shares, session["user_id"], stock["symbol"])
-            db.execute("UPDATE users SET cash = ? WHERE id = ?", cash-req_amount, session["user_id"])
-
-        else:
-            db.execute("INSERT INTO stocks (user_id, stock_symbol, no_shares) VALUES (?, ? , ?)",
-                       session["user_id"], stock["symbol"], shares)
-            db.execute("UPDATE users SET cash = ? WHERE id = ?", cash-req_amount, session["user_id"])
-
-        now = datetime.now()
-        transacted = now.strftime("%H:%M:%S %d/%m/%Y")
         db.execute("INSERT INTO history (id, symbol, price, total, shares, datetime) VALUES (?, ?, ?, ?, ?, ?)",
                    session["user_id"], stock["symbol"], usd(stock["price"]), usd(req_amount), shares, transacted)
 
