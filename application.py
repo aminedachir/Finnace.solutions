@@ -69,9 +69,9 @@ def buy():
 @app.route("/history")
 @login_required
 def history():
-    stocks = db.execute(
-        "SELECT symbol, shares, price, total, datetime FROM history WHERE id = ? ORDER BY sr DESC", session["user_id"])
-    return render_template("history.html", stocks=stocks)
+    #stocks = db.execute(
+        #"SELECT symbol, shares, price, total, datetime FROM history WHERE id = ? ORDER BY sr DESC", session["user_id"])
+    return render_template("history.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -169,8 +169,9 @@ def sell():
         if shares > sharess:
 
             return "<script>alert('You do not have this number of shares')</script>"
-    else:
         return render_template("sell.html", stocks=stocks)
+    else:
+        return render_template("sell.html")
 
 
 def errorhandler(e):
