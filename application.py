@@ -75,8 +75,8 @@ def buy():
     prev_stocks = db.execute("SELECT no_shares FROM stocks WHERE user_id = ? AND stock_symbol = ?",
                                  session["user_id"], stock["symbol"])
 
-        if len(prev_stocks) != 0:
-            prev_shares = prev_stocks[0]["no_shares"]
+        if len(stocks) != 0:
+            prev_shares = stocks[0]["not shares"]
             db.execute("UPDATE stocks SET no_shares = ? WHERE user_id = ? AND stock_symbol = ?",
                        prev_shares+shares, session["user_id"], stock["symbol"])
             db.execute("UPDATE users SET cash = ? WHERE id = ?", cash-req_amount, session["user_id"])
