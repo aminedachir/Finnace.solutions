@@ -146,7 +146,7 @@ def quote():
 
         stock = lookup(request.form.get("symbol"))
 
-        if not stock
+        if stock == None:
             return "<script>alert('Invalid symbol')</script>"
 
         return render_template("quoted.html", stock=stock)
