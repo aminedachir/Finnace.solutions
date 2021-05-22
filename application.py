@@ -43,10 +43,17 @@ if not os.environ.get("API_KEY"):
 @app.route("/")
 @login_required
 def index():
-    if request.method == 'POST':
-        return ("TODO")
-    else:
-        return render_template("index.html")
+    stocks = db.execute("SELECT stock_symbol, no_shares FROM stocks WHERE user_id = ?", session["user_id"])
+    total = cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
+    info = []
+    for i in range(len(stocks)):
+        info.append(lookup(stocks[i]["stock_symbol"]))
+        info[i]["shares"] = stocks[i]["no_shares"]
+        info[i]["total"] = info[i]["shares"] * info[i]["price"]
+        total += info[i]["shares"] * info[i]["price"]
+        info[i]["price"] = info[i]["price"]
+
+    return render_template("index.html", stocks=stock_info, cash=usd(cash), total=usd(total))
 
 
 @app.route("/buy", methods=["GET", "POST"])
