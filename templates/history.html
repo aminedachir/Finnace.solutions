@@ -17,14 +17,13 @@
             </tr>
         </thead>
         <td>
-
             {% for stock in stocks %}
             <tr>
-                <td>{{ stock.symbol }}</td>
-                <td>{{ stock.name }}</td>
-                <td>{{ stock.shares }}</td>
-                <td>{{ stock.per_share }}</td>
-                <td>{{ stock.timeStamp }}</td>
+                <td>{{stock.symbol}}</td>
+                <td>{{stock.name}}</td>
+                <td>{{stock.shares}}</td>
+                <td>{{stock.per_share}}</td>
+                <td>{{stock.timeStamp}}</td>
                 </td>
             </tr>
             {% endfor %}
