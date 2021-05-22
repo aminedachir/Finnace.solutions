@@ -143,13 +143,17 @@ def logout():
 @login_required
 def quote():
     if request.method == "POST":
-
-        stock = lookup(request.form.get("symbol"))
-
-        if stock == None:
-            return "<script>alert('Invalid symbol')</script>"
-
-        return render_template("quoted.html", stock=stock)
+        if result is not None:
+            return result
+        symbol = request.form.get("symbol").upper()
+        stock = lookup(symbol)
+        if stock is None:
+            return apology("Invalid", 403)
+        return render_template("quoted.html", stockName={
+            'name': stock['name'],
+            'symbol': stock['symbol'],
+            'price': usd(stock['price'])
+        })
 
     else:
         return render_template("quote.html")
