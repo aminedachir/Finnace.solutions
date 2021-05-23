@@ -191,10 +191,11 @@ def setting():
     else:
         return render_template("setting.html")
 
-app.route("/cash", methods=['GET', 'POST'])
+@app.route("/cash", methods=['GET', 'POST'])
 @login_required
 def cash():
     return apology("Not yet")
+
 
 def errorhandler(e):
     """Handle error"""
