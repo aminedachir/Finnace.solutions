@@ -1,9 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-
+    Setting
 {% endblock %}
 
 {% block main %}
-
+    <form action="/setting" method = 'POST'>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="enter new password">
+            <input class="form-control" type="password" name="password" placeholder="repeat password">
+        </div>
+    </form>
 {% endblock %}
