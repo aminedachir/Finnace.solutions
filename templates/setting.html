@@ -7,8 +7,10 @@
 {% block main %}
     <form action="/setting" method = 'POST'>
         <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="enter new password"><br>
-            <input class="form-control" type="password" name="password" placeholder="repeat password">
+            <input class="form-control" type="password" name="password" placeholder="enter old password"><br><br>
+            <input class="form-control" type="password" name="password" placeholder="enter new password"><br><br>
+            <input class="form-control" type="password" name="password" placeholder="repeat new password"><br><br>
         </div>
+        <input id="submit" class="btn btn-primary" type="submit" value = "Change Password">
     </form>
 {% endblock %}
