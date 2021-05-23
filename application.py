@@ -175,7 +175,15 @@ def sell():
 @app.route("/setting", methods = ['GET', 'POST'])
 @login_required
 def setting():
-    return render_template("setting.html")
+    if request.method == "POST":
+        old = request.form.get("old")
+        password01 = request.form.get("password")
+        password02 = request.form.get("confirm")
+        if password01 != password02:
+            return apology("Passwords Didn't match")
+        
+    else:
+        return render_template("setting.html")
 
 
 def errorhandler(e):
