@@ -181,6 +181,9 @@ def setting():
         confirm_npassword = request.form.get("confirm")
         if new_password != confirm_npassword:
             return "<script>alert('Passwords Didn't match')</script>"
+        hashe = db.execute("SELECT hash FROM users WHERE id = :id", id=session["user_id"])[0]["hash"]
+        if not check_password_hash(hashe, old):
+            return apology("Incorrect Password")
     else:
         return render_template("setting.html")
 
