@@ -176,7 +176,7 @@ def sell():
 @login_required
 def setting():
     if request.method == "POST":
-        old = request.form.get("old_password")
+        old = request.form.get("old")
         new_password = request.form.get("new_password")
         confirm_npassword = request.form.get("confirm_npassword")
         if new_password != confirm_npassword:
