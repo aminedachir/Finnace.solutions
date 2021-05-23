@@ -184,6 +184,8 @@ def setting():
         hashe = db.execute("SELECT hash FROM users WHERE id = :id", id=session["user_id"])[0]["hash"]
         if not check_password_hash(hashe, old):
             return apology("Incorrect Password")
+        else:
+            newpassword = generate_password_hash(new_password)
     else:
         return render_template("setting.html")
 
