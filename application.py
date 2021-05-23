@@ -180,8 +180,7 @@ def setting():
         new_password = request.form.get("password")
         confirm_npassword = request.form.get("confirm")
         if new_password != confirm_npassword:
-            return apology("Passwords Didn't match")
-
+            return "<script>alert('Passwords Didn't match')</script>"
     else:
         return render_template("setting.html")
 
