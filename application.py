@@ -175,7 +175,7 @@ def sell():
 @app.route("/setting", methods = ['GET', 'POST'])
 @login_required
 def setting():
-    return apology("  ")
+    return render_template("setting.html")
 
 
 def errorhandler(e):
