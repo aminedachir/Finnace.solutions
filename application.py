@@ -176,9 +176,9 @@ def sell():
 @login_required
 def setting():
     if request.method == "POST":
-        old = request.form.get("old")
-        new_password = request.form.get("password")
-        confirm_npassword = request.form.get("confirm")
+        old = request.form.get("old_password")
+        new_password = request.form.get("new_password")
+        confirm_npassword = request.form.get("confirm_npassword")
         if new_password != confirm_npassword:
             return "<script>alert('Passwords Didn't match')</script>"
         hashe = db.execute("SELECT hash FROM users WHERE id = :id", id=session["user_id"])[0]["hash"]
