@@ -183,7 +183,7 @@ def setting():
             return "<script>alert('Passwords Didn't match')</script>"
         hashe = db.execute("SELECT hash FROM users WHERE id = :id", id=session["user_id"])[0]["hash"]
         if not check_password_hash(hashe, old):
-            return "<script>alert('Incorrect Password')</script>")
+            return "<script>alert('Incorrect Password')</script>"
         else:
             newpassword = generate_password_hash(new_password)
             db.execute("UPDATE users SET hash = ? WHERE id = ?", newpassword, session["user_id"])
