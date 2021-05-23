@@ -172,6 +172,11 @@ def sell():
     else:
         return render_template("sell.html")
 
+@app.route("/setting", methods = ['GET', 'POST'])
+@login_required
+def setting():
+    return apology("  ")
+
 
 def errorhandler(e):
     """Handle error"""
