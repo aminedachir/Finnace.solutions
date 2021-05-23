@@ -177,11 +177,11 @@ def sell():
 def setting():
     if request.method == "POST":
         old = request.form.get("old")
-        password01 = request.form.get("password")
-        password02 = request.form.get("confirm")
-        if password01 != password02:
+        new_password = request.form.get("password")
+        confirm_npassword = request.form.get("confirm")
+        if new_password != confirm_npassword:
             return apology("Passwords Didn't match")
-        
+
     else:
         return render_template("setting.html")
 
