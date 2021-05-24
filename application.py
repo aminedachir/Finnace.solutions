@@ -199,7 +199,7 @@ def cash():
     if request.method == 'POST':
         cash = int(request.form.get("cash"))
         if cash == None:
-            pass
+            return apology("Invalid cash")
 
     else:
         return render_template("cash.html")
