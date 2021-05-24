@@ -71,7 +71,8 @@ def buy():
 def history():
     #stocks = db.execute(
         #"SELECT symbol, shares, price, total, datetime FROM history WHERE id = ? ORDER BY sr DESC", session["user_id"])
-    return render_template("history.html")
+    username = db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]["username"]
+    return render_template("history.html", username= username)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
