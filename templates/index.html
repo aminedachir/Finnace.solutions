@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block main %}
-    <center><h1 style="color:red;">Your wallet</h1></center>
+    <center><h1 style="color:red;">Your wallet, {{username}}</h1></center>
     <p>
         <table class="table table-striped">
             <tr>
                 <th>Symbol</th>
-                <th>Name</th>
+                <th>username</th>
                 <th>Shares</th>
                 <th>Price</th>
                 <th>cash</th>
             </tr>
             <tr>
                 <td>{{symbol}}</td>
-                <td>{{name}}</td>
+                <td>{{username}}</td>
                 <td>{{shares}}</td>
                 <td>{{price}}</td>
                 <td>{{cash}}</td>

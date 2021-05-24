@@ -43,7 +43,8 @@ if not os.environ.get("API_KEY"):
 @login_required
 def index():
     total = cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
-    return render_template("index.html",cash=usd(cash), total=usd(total))
+    username = db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]["username"]
+    return render_template("index.html",cash=usd(cash),username=username )
 
 
 @app.route("/buy", methods=["GET", "POST"])
