@@ -92,7 +92,7 @@ def register():
             return "<script>alert('username exists')</script>"
 
         elif username == password1:
-            return "<script>alert('don't write your username in password')</script>"
+            return "<script>alert('don't write your username in password)</script>"
 
         elif len(password1) < 8:
             return "<script>alert('password should take 8 letter a min')</script>"
