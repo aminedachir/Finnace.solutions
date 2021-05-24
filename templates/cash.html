@@ -6,4 +6,9 @@
 
 {% block main %}
     <h4>Add Cash</h4>
+    <form action="/cash" mathod = 'POST'>
+        <div>
+            <input type="number" placeholder="add number of cash" name="cash" class="form-control">
+        </div>
+    </form>
 {% endblock %}
