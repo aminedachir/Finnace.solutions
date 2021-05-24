@@ -88,6 +88,9 @@ def register():
         rows = db.execute("SELECT * FROM users WHERE username = :username",
                           username=username)
 
+        if username == password1:
+            return "<script>alert('don't write your username in password)</script>"
+
         if len(rows) != 0:
             return "<script>alert('username exists')</script>"
 
