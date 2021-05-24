@@ -94,6 +94,9 @@ def register():
         elif username == password1:
             return "<script>alert('don't write your username in password)</script>"
 
+        elif len(password1) < 8:
+            return "<script>alert('password should take 8 letter a min')</script>"
+
         elif password1 != password2:
             return "<script>alert('password and confirm password not match')</script>"
 
