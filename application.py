@@ -42,9 +42,9 @@ if not os.environ.get("API_KEY"):
 @app.route("/")
 @login_required
 def index():
-    total = cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
+    total = amount = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
     username = db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]["username"]
-    return render_template("index.html",cash=usd(cash),username=username )
+    return render_template("index.html",amount=usd(amount),username=username )
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -197,12 +197,12 @@ def setting():
 @login_required
 def cash():
     if request.method == 'POST':
-        cash = int(request.form.get("cash"))
-        if cash == None:
-            return apology("Invalid cash")
-        else:
-            ncash = cash
-            db.execute("UPDATE users SET cash = ? WHERE id = ?", ncash, session["user_id"])
+        db.execute("""
+        UPDATE users
+        SET cash = cash+cash
+        WHERE id =:user_id
+        """,
+        user_id = session["user_id"])
         return redirect("/")
     else:
         return render_template("cash.html")
