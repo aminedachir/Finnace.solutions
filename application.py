@@ -198,6 +198,7 @@ def setting():
 def cash():
     if request.method == 'POST':
         db.execute("UPDATE users SET cash = cash+:amount WHERE id =:user_id ",amount = request.form.get("cash"),user_id = session["user_id"])
+        flash("Cash Added")
         return redirect("/")
     else:
         return render_template("cash.html")
