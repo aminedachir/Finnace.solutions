@@ -196,7 +196,7 @@ def setting():
 @app.route("/cash", methods=['GET', 'POST'])
 @login_required
 def cash():
-    return apology("Not yet")
+    return render_template("cash.html")
 
 
 def errorhandler(e):
