@@ -196,7 +196,7 @@ def setting():
 @app.route("/cash", methods=['GET', 'POST'])
 @login_required
 def cash():
-    if request.method = 'POST':
+    if request.method == 'POST':
         cash = int(request.form.get("cash"))
     else:
         return render_template("cash.html")
