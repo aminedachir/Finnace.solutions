@@ -197,9 +197,10 @@ def setting():
 @login_required
 def cash():
     if request.method == 'POST':
+        amount = request.form.get("cash")
         db.execute("""
         UPDATE users
-        SET cash = cash+cash
+        SET cash = cash+amount
         WHERE id =:user_id
         """,
         user_id = session["user_id"])
