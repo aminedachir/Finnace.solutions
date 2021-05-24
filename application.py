@@ -196,7 +196,10 @@ def setting():
 @app.route("/cash", methods=['GET', 'POST'])
 @login_required
 def cash():
-    return render_template("cash.html")
+    if request.method = 'POST':
+        pass
+    else:
+        return render_template("cash.html")
 
 
 def errorhandler(e):
