@@ -197,7 +197,7 @@ def setting():
 @login_required
 def cash():
     if request.method = 'POST':
-        pass
+        cash = int(request.form.get("cash"))
     else:
         return render_template("cash.html")
 
