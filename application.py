@@ -203,6 +203,7 @@ def cash():
         else:
             ncash = cash
             db.execute("UPDATE users SET cash = ? WHERE id = ?", ncash, session["user_id"])
+        return redirect("/")
     else:
         return render_template("cash.html")
 
