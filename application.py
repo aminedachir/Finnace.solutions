@@ -92,7 +92,7 @@ def register():
             password = generate_password_hash(password1)
             db.execute("INSERT INTO users (username, hash) VALUES (:username, :password)", username=username, password=password)
             session["user_id"] = db.execute("SELECT id FROM users WHERE username = :username", username=username)[0]["id"]
-            flash("registered")
+            flash("registered !")
             return redirect("/")
     else:
         return render_template("register.html")
