@@ -78,6 +78,10 @@ def register():
                           username=username)
         if len(rows) != 0:
             return "<script>alert('username exists')</script>"
+        x = password1.isalpha()
+        if x == true:
+            return "<script>alert('should write one number minumum in your password')</script>"
+
         elif username == password1:
             return "<script>alert('don't write your username in password)</script>"
         elif len(password1) < 8:
