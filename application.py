@@ -163,6 +163,7 @@ def setting():
         else:
             newpassword = generate_password_hash(new_password)
             db.execute("UPDATE users SET hash = ? WHERE id = ?", newpassword, session["user_id"])
+        flash("Password changed")
         return redirect("/")
     else:
         return render_template("setting.html")
