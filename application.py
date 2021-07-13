@@ -183,8 +183,6 @@ def errorhandler(e):
         e = InternalServerError()
     return apology(e.name, e.code)
 
-
-
 # Listen for errors
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
